@@ -29,5 +29,8 @@ import java.util.List;
     public void atualizarProdutoNaLoja(@PathVariable int produtoId, @RequestBody Produto dadosAtualizarProduto) {
         this.tabelaDeProdutos.atualizarProduto(produtoId, dadosAtualizarProduto);
     }
+    @DeleteMapping("/{produtoId}")
+    public void removerProdutoNaLoja(@PathVariable int produtoId) {
+        this.tabelaDeProdutos.removerProduto(produtoId);
+    }
 }
-
