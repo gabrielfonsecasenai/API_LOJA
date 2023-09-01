@@ -26,4 +26,23 @@ public class TabelaDeProdutos {
     public List<Produto> buscarToodosOsProdutos() {
         return this.getProdutos();
     }
+    public Produto buscarProdutoPeloId(int produtoId) {
+        Produto produtoProcurado = null;
+        for (Produto p: this.produtos) {
+            if (p.getId() == produtoId) {
+                produtoProcurado = p;
+                break;
+            }
+        }
+        return produtoProcurado;
+    }
+    public Produto cadastrarNovoProduto(Produto novoProduto) {
+        int ultimoIndex = this.produtos.size() - 1;
+        Produto ultimoProduto = this.produtos.get(ultimoIndex);
+        int proximoId = ultimoProduto.getId() + 1;
+
+        novoProduto.setId(proximoId);
+        this.produtos.add(novoProduto);
+        return novoProduto;
+    }
 }

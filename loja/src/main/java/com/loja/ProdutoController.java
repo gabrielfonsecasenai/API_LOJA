@@ -1,8 +1,6 @@
 package com.loja;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,6 +15,15 @@ import java.util.List;
     @GetMapping
     public List<Produto> buscarTodosProdutosDaLoja() {
         return this.tabelaDeProdutos.buscarToodosOsProdutos();
+    }
+    @GetMapping("/{produtoId}")
+    public Produto buscarProdutoPeloIdNaLoja(@PathVariable int produtoId) {
+        Produto produtoProcurado = this.tabelaDeProdutos.buscarProdutoPeloId(produtoId);
+        return produtoProcurado;
+    }
+    @PostMapping
+    public Produto cadastrarNovoProdutoNaLoja(@RequestBody Produto dadosNovoProduto) {
+        return this.tabelaDeProdutos.cadastrarNovoProduto((dadosNovoProduto));
     }
 }
 
